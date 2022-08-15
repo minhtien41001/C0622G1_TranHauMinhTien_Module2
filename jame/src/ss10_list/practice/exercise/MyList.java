@@ -1,4 +1,4 @@
-package ss09_list.practice.exercise;
+package ss10_list.practice.exercise;
 
 import java.util.Arrays;
 

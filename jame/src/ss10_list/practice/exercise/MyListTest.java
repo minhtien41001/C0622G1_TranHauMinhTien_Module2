@@ -1,4 +1,4 @@
-package ss09_list.practice.exercise;
+package ss10_list.practice.exercise;
 
 public class MyListTest {
     public static class Student {

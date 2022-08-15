@@ -1,4 +1,4 @@
-package ss09_list.practice.practice1.model;
+package ss10_list.practice.practice1.model;
 
 import java.util.List;
 
