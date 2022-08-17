@@ -15,7 +15,9 @@ public class TeacherController {
                     "1. Thêm mới giảng viên \n" +
                     "2. Xóa giảng viên \n" +
                     "3. Xem danh sách giảng viên \n"  +
-                    "4. Trở về menu chính");
+                    "4. Tìm giảng viên theo ID \n" +
+                    "5. Tìm giảng viên theo tên \n" +
+                    "6. Trở về menu chính");
             System.out.println("Chọn chức năng: ");
 
             int choice = Integer.parseInt(scanner.nextLine());
@@ -33,6 +35,14 @@ public class TeacherController {
                     break;
                 }
                 case 4:{
+                    iTeacherService.findByIdTeacher();
+                    break;
+                }
+                case 5:{
+                    iTeacherService.findByNameTeacher();
+                    break;
+                }
+                case 6:{
                     return;
                 }
             }

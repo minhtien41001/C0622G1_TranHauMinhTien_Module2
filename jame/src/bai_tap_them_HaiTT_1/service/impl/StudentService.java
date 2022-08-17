@@ -50,6 +50,42 @@ public class StudentService implements IStudentService {
         }
     }
 
+    @Override
+    public void findById() {
+        boolean check = false;
+        System.out.println("Nhập ID sinh viên cần tìm: ");
+        int findId = Integer.parseInt(scanner.nextLine());
+
+        for (Student student : studentList){
+            if (findId == student.getId()){
+                System.out.println(student);
+                check = true;
+                break;
+            }
+        }
+        if (!check){
+            System.out.println("Không tìm thấy sinh viên có ID " + findId);
+        }
+    }
+
+    @Override
+    public void findByName() {
+        boolean check = false;
+        System.out.println("Nhập tên sinh viên cần tìm: ");
+        String findName = scanner.nextLine();
+
+        for (Student student : studentList){
+            if (student.getName().contains(findName)){
+                System.out.println(student);
+                check = true;
+                break;
+            }
+        }
+        if (!check){
+            System.out.println("Không tìm thấy sinh viên có tên " + findName);
+        }
+    }
+
     public static Student infoStudent(){
         System.out.println("Nhập ID sinh viên: ");
         int id = Integer.parseInt(scanner.nextLine());
@@ -67,7 +103,7 @@ public class StudentService implements IStudentService {
         String className = scanner.nextLine();
 
         System.out.println("Nhập điểm của sinh viên: ");
-        double point = scanner.nextDouble();
+        double point = Double.parseDouble(scanner.nextLine());
 
         return new Student(id,name,dateOfBirth,sex,className,point);
     }

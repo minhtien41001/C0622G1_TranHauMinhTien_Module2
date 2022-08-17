@@ -51,6 +51,42 @@ public class TeacherService implements ITeacherService {
         }
     }
 
+    @Override
+    public void findByIdTeacher() {
+        boolean check = false;
+        System.out.println("Nhập ID của giảng viên cần tìm: ");
+        int findIdTeacher = Integer.parseInt(scanner.nextLine());
+
+        for (Teacher teacher : teacherList){
+            if (findIdTeacher == teacher.getId()){
+                System.out.println(teacher);
+                check = true;
+                break;
+            }
+        }
+        if (!check){
+            System.out.println("Không tìm thấy giảng viên có ID: " + findIdTeacher);
+        }
+    }
+
+    @Override
+    public void findByNameTeacher() {
+        boolean check = false;
+        System.out.println("Nhập tên giảng viên cần tìm: ");
+        String findNameTeacher = scanner.nextLine();
+
+        for (Teacher teacher : teacherList){
+            if (teacher.getName().contains(findNameTeacher)){
+                System.out.println(teacher);
+                check = true;
+                break;
+            }
+        }
+        if (!check){
+            System.out.println("Không tìm thấy giảng viên có tên " + findNameTeacher);
+        }
+    }
+
     public static Teacher infoTeacher(){
         System.out.println("Nhập ID giảng viên: ");
         int id = Integer.parseInt(scanner.nextLine());
