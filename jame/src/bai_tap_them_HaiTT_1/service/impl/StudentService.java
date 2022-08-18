@@ -4,12 +4,14 @@ import bai_tap_them_HaiTT_1.model.Student;
 import bai_tap_them_HaiTT_1.service.IStudentService;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
 public class StudentService implements IStudentService {
     private static List<Student> studentList = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
+
 
     @Override
     public void addStudent() {
@@ -85,6 +87,24 @@ public class StudentService implements IStudentService {
             System.out.println("Không tìm thấy sinh viên có tên " + findName);
         }
     }
+
+    @Override
+    public void bubbleSortByName() {
+        boolean needNextPass = true;
+        for (int i = 1; i < studentList.size() && needNextPass; i++) {
+
+            needNextPass = false;
+            for (int j = 0; j < studentList.size() - i; j++) {
+                if (studentList.get(j).getName().compareTo(studentList.get(j + 1).getName()) > 0) {
+                    Collections.swap(studentList, j, j + 1);
+                    needNextPass = true;
+                }
+            }
+        }
+        System.out.println("Danh sách sau sắp xếp: ");
+        displayStudent();
+    }
+
 
     public static Student infoStudent(){
         System.out.println("Nhập ID sinh viên: ");

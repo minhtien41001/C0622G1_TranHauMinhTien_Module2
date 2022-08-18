@@ -17,7 +17,8 @@ public class StudentController {
                     "3. Xem danh sách sinh viên \n" +
                     "4. Tìm kiếm sinh viên theo ID \n" +
                     "5. Tìm kiếm sinh viên theo tên\n" +
-                    "6. Trở về menu chính");
+                    "6. Sắp xếp sinh viên theo tên \n" +
+                    "7. Trở về menu chính");
             System.out.println("Chọn chức năng: ");
 
             int choice = Integer.parseInt(scanner.nextLine());
@@ -43,6 +44,9 @@ public class StudentController {
                     break;
                 }
                 case 6:{
+                    iStudentService.bubbleSortByName();
+                }
+                case 7:{
                     return;
                 }
             }

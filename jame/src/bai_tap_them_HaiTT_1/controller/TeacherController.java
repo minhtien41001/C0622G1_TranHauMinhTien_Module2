@@ -17,7 +17,8 @@ public class TeacherController {
                     "3. Xem danh sách giảng viên \n"  +
                     "4. Tìm giảng viên theo ID \n" +
                     "5. Tìm giảng viên theo tên \n" +
-                    "6. Trở về menu chính");
+                    "6. Sắp xếp giảng viên theo tên \n" +
+                    "7. Trở về menu chính");
             System.out.println("Chọn chức năng: ");
 
             int choice = Integer.parseInt(scanner.nextLine());
@@ -43,6 +44,9 @@ public class TeacherController {
                     break;
                 }
                 case 6:{
+                    iTeacherService.bubbleSortByNameTeacher();
+                }
+                case 7:{
                     return;
                 }
             }

@@ -5,6 +5,7 @@ import bai_tap_them_HaiTT_1.model.Teacher;
 import bai_tap_them_HaiTT_1.service.ITeacherService;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -84,6 +85,25 @@ public class TeacherService implements ITeacherService {
         }
         if (!check){
             System.out.println("Không tìm thấy giảng viên có tên " + findNameTeacher);
+        }
+    }
+
+    @Override
+    public void bubbleSortByNameTeacher() {
+        boolean needNextPass = true;
+        for (int i = 1; i < teacherList.size() && needNextPass; i++) {
+
+            needNextPass = false;
+            for (int j = 0; j < teacherList.size() - i; j++) {
+                if (teacherList.get(j).getName().compareTo(teacherList.get(j + 1).getName()) > 0) {
+                    Collections.swap(teacherList, j, j + 1);
+                    needNextPass = true;
+                }
+            }
+        }
+        System.out.println("Danh sách sau sắp xếp: ");
+        for (int i = 0; i < teacherList.size(); i++) {
+            System.out.println(teacherList.get(i).toString());
         }
     }
 

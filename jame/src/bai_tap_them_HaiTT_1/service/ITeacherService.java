@@ -10,4 +10,6 @@ public interface ITeacherService {
     void findByIdTeacher();
 
     void findByNameTeacher();
+
+    void bubbleSortByNameTeacher();
 }

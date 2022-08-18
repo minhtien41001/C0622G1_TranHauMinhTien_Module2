@@ -10,4 +10,6 @@ public interface IStudentService {
     void findById();
 
     void findByName();
+
+    void bubbleSortByName();
 }
