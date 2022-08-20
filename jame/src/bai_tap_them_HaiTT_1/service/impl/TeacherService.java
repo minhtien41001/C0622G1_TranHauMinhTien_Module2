@@ -1,5 +1,6 @@
 package bai_tap_them_HaiTT_1.service.impl;
 
+import bai_tap_them_HaiTT_1.exception.DuplicateIDException;
 import bai_tap_them_HaiTT_1.model.Student;
 import bai_tap_them_HaiTT_1.model.Teacher;
 import bai_tap_them_HaiTT_1.service.ITeacherService;
@@ -108,8 +109,24 @@ public class TeacherService implements ITeacherService {
     }
 
     public static Teacher infoTeacher(){
-        System.out.println("Nhập ID giảng viên: ");
-        int id = Integer.parseInt(scanner.nextLine());
+        int id;
+        while (true){
+            try {
+                System.out.println("Nhập ID giảng viên: ");
+                id = Integer.parseInt(scanner.nextLine());
+
+                for (Teacher teacher : teacherList){
+                    if (teacher.getId() == id){
+                        throw new DuplicateIDException("Trùng ID, vui lòng nhập lại! ");
+                    }
+                }
+                break;
+            }catch (NumberFormatException e){
+                System.out.println("Vui lòng nhập số nguyên !");
+            }catch (DuplicateIDException p){
+                System.out.println(p.getMessage());
+            }
+        }
 
         System.out.println("Nhập tên giảng viên: ");
         String name = scanner.nextLine();

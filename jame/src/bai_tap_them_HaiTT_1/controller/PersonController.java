@@ -15,9 +15,15 @@ public  class PersonController {
                     "1. Quản lý giảng viên \n" +
                     "2. Quản lý học viên \n" +
                     "3. Exit");
-            System.out.println("Mời bạn nhập lựa chọn để tiếp tục: ");
 
-            int choice = Integer.parseInt(scanner.nextLine());
+            int choice = 0;
+            try {
+                System.out.println("Mời bạn nhập lựa chọn để tiếp tục: ");
+                choice = Integer.parseInt(scanner.nextLine());
+            }catch (NumberFormatException e){
+                System.out.println("Vui lòng nhập số!");
+            }
+
             switch (choice){
                 case 1:{
                     teacherController.menuTeacher();

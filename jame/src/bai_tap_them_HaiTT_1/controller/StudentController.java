@@ -19,9 +19,15 @@ public class StudentController {
                     "5. Tìm kiếm sinh viên theo tên\n" +
                     "6. Sắp xếp sinh viên theo tên \n" +
                     "7. Trở về menu chính");
-            System.out.println("Chọn chức năng: ");
 
-            int choice = Integer.parseInt(scanner.nextLine());
+            int choice = 0;
+            try {
+                System.out.println("Chọn chức năng: ");
+                choice = Integer.parseInt(scanner.nextLine());
+            }catch (NumberFormatException e){
+                System.out.println("Vui lòng nhập số! ");
+            }
+
             switch (choice){
                 case 1:{
                     iStudentService.addStudent();

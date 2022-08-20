@@ -1,5 +1,6 @@
 package bai_tap_them_HaiTT_1.service.impl;
 
+import bai_tap_them_HaiTT_1.exception.DuplicateIDException;
 import bai_tap_them_HaiTT_1.model.Student;
 import bai_tap_them_HaiTT_1.service.IStudentService;
 
@@ -107,8 +108,24 @@ public class StudentService implements IStudentService {
 
 
     public static Student infoStudent(){
-        System.out.println("Nhập ID sinh viên: ");
-        int id = Integer.parseInt(scanner.nextLine());
+        int id;
+        while (true) {
+            try {
+                System.out.println("Nhập ID sinh viên: ");
+                 id = Integer.parseInt(scanner.nextLine());
+
+                for (Student student :studentList){
+                    if (student.getId() == id){
+                        throw new DuplicateIDException("Trùng ID,vui lòng nhập lại! ");
+                    }
+                }
+                break;
+            }catch (NumberFormatException e){
+                System.out.println("Vui lòng nhập số!");
+            }catch (DuplicateIDException e){
+                System.out.println(e.getMessage());
+            }
+        }
 
         System.out.println("Nhập tên sinh viên: ");
         String name = scanner.nextLine();
@@ -122,9 +139,16 @@ public class StudentService implements IStudentService {
         System.out.println("Nhập lớp của sinh viên: ");
         String className = scanner.nextLine();
 
-        System.out.println("Nhập điểm của sinh viên: ");
-        double point = Double.parseDouble(scanner.nextLine());
-
+        double point;
+        while (true){
+            try{
+                System.out.println("Nhập điểm của sinh viên: ");
+                point = Double.parseDouble(scanner.nextLine());
+                break;
+            }catch (NumberFormatException e){
+                System.out.println("Vui lòng nhập số!");
+            }
+        }
         return new Student(id,name,dateOfBirth,sex,className,point);
     }
 }

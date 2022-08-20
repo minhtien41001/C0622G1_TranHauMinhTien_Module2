@@ -19,9 +19,14 @@ public class TeacherController {
                     "5. Tìm giảng viên theo tên \n" +
                     "6. Sắp xếp giảng viên theo tên \n" +
                     "7. Trở về menu chính");
-            System.out.println("Chọn chức năng: ");
+            int choice = 0;
+            try {
+                System.out.println("Chọn chức năng: ");
+                choice = Integer.parseInt(scanner.nextLine());
+            }catch (NumberFormatException e){
+                System.out.println("Vui lòng nhập số! ");
+            }
 
-            int choice = Integer.parseInt(scanner.nextLine());
             switch (choice){
                 case 1:{
                     iTeacherService.addTeacher();
