@@ -19,6 +19,10 @@ public class Teacher extends Person{
         this.specialize = specialize;
     }
 
+    public String getInfo() {
+        return String.format("%s,%s,%s,%s,%s\n", this.getId(), this.getName(), this.getDateOfBirth(), this.getSex(), this.getSpecialize());
+    }
+
     @Override
     public String toString() {
         return "Teacher{"+ super.toString() +

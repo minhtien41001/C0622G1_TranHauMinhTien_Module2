@@ -1,9 +1,10 @@
 package bai_tap_them_HaiTT_1.service.impl;
 
 import bai_tap_them_HaiTT_1.exception.DuplicateIDException;
-import bai_tap_them_HaiTT_1.model.Student;
 import bai_tap_them_HaiTT_1.model.Teacher;
 import bai_tap_them_HaiTT_1.service.ITeacherService;
+import bai_tap_them_HaiTT_1.utils.ReadFileUtil;
+import bai_tap_them_HaiTT_1.utils.WriteFileUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,7 +12,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class TeacherService implements ITeacherService {
-    private static List<Teacher> teacherList = new ArrayList<>();
+    private static final String PATH = "jame/src/bai_tap_them_HaiTT_1/data/teacherList.csv";
+    private static List<Teacher> teacherList = ReadFileUtil.readTeacherFile(PATH);
     private static Scanner scanner = new Scanner(System.in);
 
     @Override
@@ -19,6 +21,8 @@ public class TeacherService implements ITeacherService {
         Teacher teacher = infoTeacher();
         teacherList.add(teacher);
         System.out.println("Thêm mới giảng viên thành công!");
+
+        WriteFileUtil.writeTeacherFile(PATH,teacherList);
     }
 
     @Override
@@ -36,6 +40,8 @@ public class TeacherService implements ITeacherService {
                 if (choiceYesNo == 1){
                     teacherList.remove(teacher);
                     System.out.println("Xóa thành công! ");
+
+                    WriteFileUtil.writeTeacherFile(PATH,teacherList);
                 }
                 isFlag =true;
                 break;
@@ -106,6 +112,7 @@ public class TeacherService implements ITeacherService {
         for (int i = 0; i < teacherList.size(); i++) {
             System.out.println(teacherList.get(i).toString());
         }
+        WriteFileUtil.writeTeacherFile(PATH,teacherList);
     }
 
     public static Teacher infoTeacher(){
