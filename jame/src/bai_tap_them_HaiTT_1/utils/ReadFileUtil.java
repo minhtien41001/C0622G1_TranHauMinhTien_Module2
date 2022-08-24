@@ -24,7 +24,6 @@ public class ReadFileUtil {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return stringList;
     }
 
@@ -49,7 +48,8 @@ public class ReadFileUtil {
         for (String line : stringList) {
             info = line.split(",");
             if (info.length == 6) {
-                studentList.add(new Student(Integer.parseInt(info[0]), info[1], info[2], info[3], info[4], Double.parseDouble(info[5])));
+                studentList.add(new Student(Integer.parseInt(info[0]), info[1], info[2], info[3], info[4],
+                        Double.parseDouble(info[5])));
             }
         }
 

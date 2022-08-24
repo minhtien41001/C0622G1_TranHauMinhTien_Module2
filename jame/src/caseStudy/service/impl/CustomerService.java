@@ -34,8 +34,71 @@ public class CustomerService implements ICustomerService {
         for (Customer customer : customerList){
             if (customer.getId() == idEdit){
                 temp = customer;
-                
+                System.out.println("Nhập chỉnh sửa ID khách hàng: ");
+                int setId = Integer.parseInt(scanner.nextLine());
+
+                System.out.println("Nhập chỉnh sửa tên khách hàng: ");
+                String setName = scanner.nextLine();
+
+                System.out.println("Nhập chỉnh sửa ngày sinh khách hàng: ");
+                String setDateOfBirth = scanner.nextLine();
+
+                System.out.println("Nhập chỉnh sửa giới tính khách hàng");
+                String setSex = scanner.nextLine();
+
+                System.out.println("Nhập chỉnh sửa số CMND của khách hàng: ");
+                int setNumberCMND = Integer.parseInt(scanner.nextLine());
+
+                System.out.println("Nhập chỉnh sửa số điện thoại của khách hàng: ");
+                int setPhoneNumber = Integer.parseInt(scanner.nextLine());
+
+                System.out.println("Nhập chỉnh sửa email khách hàng: ");
+                String setEmail = scanner.nextLine();
+
+                System.out.println("Chọn chỉnh sửa loại khách hàng: ");
+                //        Diamond, Platinium, Gold, Silver, Member
+                String setTypeOfGuest = null;
+                System.out.println("1. Diamond \n" +
+                        "2. Platinium \n" +
+                        "3. Gold \n" +
+                        "4. Silver \n" +
+                        "5. Member \n");
+                int choose = Integer.parseInt(scanner.nextLine());
+                switch (choose){
+                    case 1:{
+                        setTypeOfGuest = "Diamond";
+                        break;
+                    }
+                    case 2:{
+                        setTypeOfGuest = "Platinium";
+                        break;
+                    }
+                    case 3:{
+                        setTypeOfGuest = "Gold";
+                        break;
+                    }
+                    case 4:{
+                        setTypeOfGuest = "Silver";
+                        break;
+                    }
+                    case 5:{
+                        setTypeOfGuest = "Member";
+                        break;
+                    }
+                }
+
+                System.out.println("Nhập chỉnh sửa địa chỉ khách hàng: ");
+                String setAddress = scanner.nextLine();
+
+                System.out.println("Chỉnh sửa thông tin khách hàng thành công! ");
+                customer1 = new Customer(setId,setName,setDateOfBirth,setSex,setNumberCMND,setPhoneNumber,setEmail,
+                        setTypeOfGuest,setAddress);
+                break;
             }
+        }
+        if (temp != null){
+            int index = customerList.indexOf(temp);
+            customerList.set(index,customer1);
         }
     }
 

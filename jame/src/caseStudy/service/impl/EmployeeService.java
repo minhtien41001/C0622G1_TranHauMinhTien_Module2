@@ -92,7 +92,7 @@ public class EmployeeService implements IEmployeeService {
                         "6. Giám đốc");
                 int option = Integer.parseInt(scanner.nextLine());
                 switch (option){
-                    case 1:{
+                    case 1: {
                         setLocation = "Lễ tân";
                         break;
                     }
