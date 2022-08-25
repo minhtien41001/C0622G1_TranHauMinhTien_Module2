@@ -1,10 +1,11 @@
 package bai_tap_them_HaiTT_1.service.impl;
 
 import bai_tap_them_HaiTT_1.exception.DuplicateIDException;
+import bai_tap_them_HaiTT_1.exception.InputClassException;
+import bai_tap_them_HaiTT_1.exception.InputNameException;
 import bai_tap_them_HaiTT_1.model.Student;
 import bai_tap_them_HaiTT_1.service.IStudentService;
-import bai_tap_them_HaiTT_1.utils.ReadFileUtil;
-import bai_tap_them_HaiTT_1.utils.WriteFileUtil;
+import bai_tap_them_HaiTT_1.utils.*;
 
 import java.util.Collections;
 import java.util.List;
@@ -142,17 +143,36 @@ public class StudentService implements IStudentService {
             }
         }
 
-        System.out.println("Nhập tên sinh viên: ");
-        String name = scanner.nextLine();
+        String name;
+        while (true) {
+            try {
+                name= InputUtil.getString("Nhập tên học sinh mới: ");
+                name = InputNameUtil.getNameUtil(name);
+                break;
+            } catch (InputNameException e) {
+                System.err.println(e.getMessage());
+            }
 
-        System.out.println("Nhập ngày sinh sinh viên: ");
-        String dateOfBirth = scanner.nextLine();
+        }
+
+        String dateOfBirth = InputDateOfBirthUtil.getBirthDay("Nhập ngày sinh của sinh viên: ");
 
         System.out.println("Nhập giới tính của sinh viên: ");
         String sex = scanner.nextLine();
 
-        System.out.println("Nhập lớp của sinh viên: ");
-        String className = scanner.nextLine();
+//        System.out.println("Nhập lớp của sinh viên: ");
+        String className ;
+        while (true) {
+
+
+            try {
+                className = InputUtil.getString("Nhập lớp của sinh viên: ");
+                className = InputClassUtil.getClassRegex(className);
+                break;
+            } catch (InputClassException e) {
+                System.err.println(e.getMessage());
+            }
+        }
 
         double point;
         while (true){

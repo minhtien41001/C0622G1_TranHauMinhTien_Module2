@@ -1,10 +1,10 @@
 package bai_tap_them_HaiTT_1.service.impl;
 
 import bai_tap_them_HaiTT_1.exception.DuplicateIDException;
+import bai_tap_them_HaiTT_1.exception.InputNameException;
 import bai_tap_them_HaiTT_1.model.Teacher;
 import bai_tap_them_HaiTT_1.service.ITeacherService;
-import bai_tap_them_HaiTT_1.utils.ReadFileUtil;
-import bai_tap_them_HaiTT_1.utils.WriteFileUtil;
+import bai_tap_them_HaiTT_1.utils.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -135,11 +135,19 @@ public class TeacherService implements ITeacherService {
             }
         }
 
-        System.out.println("Nhập tên giảng viên: ");
-        String name = scanner.nextLine();
+        String name;
+        while (true) {
+            try {
+                name= InputUtil.getString("Nhập tên giảng viên mới: ");
+                name = InputNameUtil.getNameUtil(name);
+                break;
+            } catch (InputNameException e) {
+                System.err.println(e.getMessage());
+            }
 
-        System.out.println("Nhập ngày sinh giảng viên: ");
-        String dateOfBirth = scanner.nextLine();
+        }
+
+        String dateOfBirth = InputDateOfBirthUtil.getBirthDay("Nhập ngày sinh của giảng viên(dd/mm/yyyy: ");
 
         System.out.println("Nhập giới tính giảng viên: ");
         String sex = scanner.nextLine();
